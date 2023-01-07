@@ -1,5 +1,5 @@
-import react from 'react'
-import CustomerHandling from './CustomerHandling'
+import react from 'react';
+import CustomerHandling from './EmployeePortal/CustomerHandling';
 export default function EmployeeHome(){
     return (
         <div>

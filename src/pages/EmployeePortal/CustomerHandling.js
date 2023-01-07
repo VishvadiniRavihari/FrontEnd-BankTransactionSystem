@@ -10,7 +10,7 @@ export default function CustomerHandling() {
      
 
       <div>
-        <a href='employeePortal/customer-list'>Customer List</a>
+        <a href='employeePortal/customer-set'>Customer List</a>
       </div>
 
     </div>
