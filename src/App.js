@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import CustomerReg from './forms/CustomerRegistration';
 import CustomerSet from './forms/CustomerSet';
+import LoanApply from './forms/LoanApplying';
 import {BrowserRouter, Route,Routes} from 'react-router-dom';
 import EmployeeHome from './pages/EmployeeHome';
 
@@ -15,6 +16,11 @@ function App() {
             <Route exact path = '/EmployeePortal' element = {<EmployeeHome/>}/>
               <Route path = 'customer-register' element = {<CustomerReg/>} />
               <Route path = 'customer-set' element = {<CustomerSet/>} />
+              <Route path = 'loan-apply' element= {<LoanApply/>}/>
+          </Route>
+
+          <Route path = '/CustomerPortal'>
+            <Route exact path = '/CustomerPortal' element = {<EmployeeHome/>}/>
           </Route>
           
         </Routes>

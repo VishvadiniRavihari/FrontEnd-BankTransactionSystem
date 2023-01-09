@@ -13,6 +13,10 @@ export default function CustomerHandling() {
         <a href='employeePortal/customer-set'>Customer List</a>
       </div>
 
+      <div>
+        <a href='employeePortal/loan-apply'>Loan Apply</a>
+      </div>
+
     </div>
   );
 }

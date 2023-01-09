@@ -9,7 +9,7 @@ export default function LoanApplicantReg() {
     employee_id: Yup.string().required(),
     branch_code: Yup.string().required(),
     amount: Yup.string().required(),
-    period: Yup.int().required(),
+    period: Yup.number().required(),
     status: Yup.string().required(),
     customer_id: Yup.string().required(),
     
@@ -31,6 +31,7 @@ export default function LoanApplicantReg() {
   };
   return (
     <div>
+      <h1>Loan Registration</h1>
       <Formik
         initialValues={{
             application_id: '',
