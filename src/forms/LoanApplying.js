@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 // Use this instead https://github.com/jannikbuschke/formik-antd
 export default function LoanApplicantReg() {
   const LoanApplicantRegSchema = Yup.object().shape({
-    application_id: Yup.string().required(),
+    // application_id: Yup.string().required(),
     employee_id: Yup.string().required(),
     branch_code: Yup.string().required(),
     amount: Yup.string().required(),
@@ -18,7 +18,7 @@ export default function LoanApplicantReg() {
   const handleSubmit = (values, { setSubmitting }) => {
     setSubmitting(true);
     const LoanApplicant = {
-        application_id: values.application_id,
+        // application_id: values.application_id,
         employee_id: values.employee_id,
         branch_code: values.branch_code,
         amount: values.amount,
@@ -31,10 +31,10 @@ export default function LoanApplicantReg() {
   };
   return (
     <div>
-      <h1>Loan Registration</h1>
+      {/* <h1>Loan Registration</h1> */}
       <Formik
         initialValues={{
-            application_id: '',
+            // application_id: '',
             employee_id: '',
             branch_code:'',
             amount: '',
@@ -51,13 +51,14 @@ export default function LoanApplicantReg() {
           };
           return (
             <Form className='LoanApplicant--reg--form'>
-              <span>
+              <h1>Loan Application</h1>
+              {/* <span>
                 <Field
                   type='text'
                   name='application_no'
                   placeholder='Loan Application Number'
                 />
-              </span>
+              </span> */}
               <span>
                 <Field type='text' name='employee_id' placeholder='Employee ID' />
               </span>
@@ -88,7 +89,7 @@ export default function LoanApplicantReg() {
               {Object.values(props.touched).includes(true) &&
                 Object.values(props.errors).length !== 0 && (
                   <div className='LoanApplicant--reg--form--errors'>
-                    <ErrorMessage name='application_id' component='div' />
+                    {/* <ErrorMessage name='application_id' component='div' /> */}
                     <ErrorMessage name='employee_id' component='div' />
                     <ErrorMessage name='branch_code' component='div' />
                     <ErrorMessage name='amount' component='div' />

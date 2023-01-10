@@ -5,12 +5,12 @@ import * as Yup from 'yup';
 // Use this instead https://github.com/jannikbuschke/formik-antd
 export default function FDCustomerReg() {
   const FDcustomerRegSchema = Yup.object().shape({
-    fd_id:Yup.string().required(),
+    // fd_id:Yup.string().required(),
     customer_id: Yup.string().required(),
     amount:Yup.string().required(),
    
     date_opened: Yup.date().required(),
-    period_in_months:Yup.int().required(),
+    period_in_months:Yup.number().required(),
     maturity_date: Yup.date().required(),
     
     branch_code: Yup.string().required(),
@@ -20,7 +20,7 @@ export default function FDCustomerReg() {
   const handleSubmit = (values, { setSubmitting }) => {
     setSubmitting(true);
     const FDcustomer = {
-        fd_id: values.fd_id,
+        // fd_id: values.fd_id,
         customer_id: values.customer_id,
         amount: values.amount,
         date_opened: values.date_opened,
@@ -35,7 +35,7 @@ export default function FDCustomerReg() {
     <div>
       <Formik
         initialValues={{
-          fd_id: '',
+          // fd_id: '',
           customer_id: '',
           amount: '',
           date_opened: '',
@@ -53,13 +53,7 @@ export default function FDCustomerReg() {
           };
           return (
             <Form className='FDcustomer--reg--form'>
-              <span>
-                <Field
-                  type='text'
-                  name='fd_id'
-                  placeholder='fixed deposit id'
-                />
-              </span>
+              <h1> FD registration</h1>
               <span>
                 <Field type='text' name='customer_id' placeholder='Customer ID' />
               </span>
@@ -93,7 +87,6 @@ export default function FDCustomerReg() {
               {Object.values(props.touched).includes(true) &&
                 Object.values(props.errors).length !== 0 && (
                   <div className='FDcustomer--reg--form--errors'>
-                    <ErrorMessage name='fd_id' component='div' />
                     <ErrorMessage name='customer_id' component='div' />
                     <ErrorMessage name='amount' component='div' />
                     <ErrorMessage name='date_opened' component='div' />

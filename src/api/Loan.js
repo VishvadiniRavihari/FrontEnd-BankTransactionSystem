@@ -27,18 +27,18 @@ export async function addLoanCustomer(newLoanCustomer) {
   }
 }
 
-export async function updateLoanCustomer(updatedLoanCustomer) {
-  try {
-    console.log(updatedLoanCustomer);
-    const response = await axios.put(
-      `${HOST}/customers/${updatedLoanCustomer.loan_no}`,
-      updatedLoanCustomer
-    );
-  } catch (err) {
-    console.log(err);
-    return await Promise.reject('Failed to update customer!');
-  }
-}
+// export async function updateLoanCustomer(updatedLoanCustomer) {
+//   try {
+//     console.log(updatedLoanCustomer);
+//     const response = await axios.put(
+//       `${HOST}/customers/${updatedLoanCustomer.loan_no}`,
+//       updatedLoanCustomer
+//     );
+//   } catch (err) {
+//     console.log(err);
+//     return await Promise.reject('Failed to update customer!');
+//   }
+// }
 
 export async function getLoanCustomer(loan_no) {
   try {
@@ -48,6 +48,6 @@ export async function getLoanCustomer(loan_no) {
     return response.data;
   } catch (err) {
     console.log(err);
-    return await Promise.reject('Failed to add to Loancustomers list!');
+    return await Promise.reject('Failed to get the loan customer!');
   }
 }

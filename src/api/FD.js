@@ -27,22 +27,22 @@ export async function addFDCustomer(newFDCustomer) {
   }
 }
 
-export async function updateFDCustomer(updatedFDCustomer) {
-  try {
-    console.log(updatedFDCustomer);
-    const response = await axios.put(
-      `${HOST}/fixed_deposit/${updatedFDCustomer.customer_id}`,
-      updatedFDCustomer
-    );
-  } catch (err) {
-    console.log(err);
-    return await Promise.reject('Failed to update customer!');
-  }
-}
+// export async function updateFDCustomer(updatedFDCustomer) {
+//   try {
+//     console.log(updatedFDCustomer);
+//     const response = await axios.put(
+//       `${HOST}/fixed_deposit/${updatedFDCustomer.customer_id}`,
+//       updatedFDCustomer
+//     );
+//   } catch (err) {
+//     console.log(err);
+//     return await Promise.reject('Failed to update customer!');
+//   }
+// }
 
-export async function getFDCustomer(id) {
+export async function getFDCustomer(fd_id) {
   try {
-    const response = await axios.get(`${HOST}/fixed_deposit/${id}`);
+    const response = await axios.get(`${HOST}/fixed_deposit/${fd_id}`);
     // console.log(response.data);
     response.data.date_opened = getDate(response.data.date_opened);
     return response.data;
