@@ -9,30 +9,29 @@ export default function ATMTransactionReg() {
     atm_id: Yup.string().required(),
     amount: Yup.number().required(),
     tran_date: Yup.date().required(),
-    type: Yup.string().required(),
+    acc_type: Yup.string().required(),
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
     setSubmitting(true);
-    const atmTransaction = {
+    const atmtransaction = {
       account_no: values.account_no,
       atm_id: values.atm_id,
       amount: values.amount,
-      tran_date: values.date,
-      type: values.type,
+      tran_date: values.tran_date,
+      acc_type: values.acc_type,
     };
-    addATMTransaction({ atmTransaction }).then(() => setSubmitting(false));
+    addATMTransaction({ atmtransaction }).then(() => setSubmitting(false));
   };
   return (
     <div>
-        <h1>ATM Transaction</h1>
       <Formik
         initialValues={{
           account_no: '',
           atm_id: '',
           amount: '',
           tran_date: '',
-          type: '',
+          acc_type: '',
         }}
         validationSchema={ATMTransactionRegSchema}
         onSubmit={handleSubmit}
@@ -42,25 +41,25 @@ export default function ATMTransactionReg() {
             borderColor: 'red',
           };
           return (
-            <Form className='atm--tran--form'>
+            <Form className='customer--reg--form'>
               <span>
-                <Field type='text' name='account_no' placeholder='Account_No' />
+                <Field type='text' name='account_no' placeholder='Account Number' />
               </span>
               <span>
-                <Field type='text' name='atm_id' placeholder='ATM_ID' />
+                <Field type='text' name='atm_id' placeholder='ATM ID' />
               </span>
               <span>
                 <Field type='text' name='amount' placeholder='Amount' />
               </span>
               <span>
-                <Field type='date' name='tran_date' placeholder='date' />
+                <Field type='date' name='tran_date' placeholder='Transaction Date' />
               </span>
               <span>
-                <Field type='text' name='type' placeholder='type' />
+                <Field type='text' name='type' placeholder='Type' />
               </span>
 
               <Button
-                className='atm--tran--form--submit'
+                className='atm--transaction--reg--form--submit'
                 type='primary'
                 onClick={props.handleSubmit}
                 disabled={props.isSubmitting}
@@ -69,7 +68,7 @@ export default function ATMTransactionReg() {
               </Button>
               {Object.values(props.touched).includes(true) &&
                 Object.values(props.errors).length !== 0 && (
-                  <div className='atm--tran--form--errors'>
+                  <div className='atm--transaction--reg--form--errors'>
                     <ErrorMessage name='account_no' component='div' />
                     <ErrorMessage name='atm_id' component='div' />
                     <ErrorMessage name='amount' component='div' />
