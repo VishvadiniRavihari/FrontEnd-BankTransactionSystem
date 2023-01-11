@@ -1,15 +1,9 @@
 import axios from 'axios';
 import { HOST } from './config';
-import { getDate } from '../utilities/dateFormat';
 
 export async function getCustomers() {
   try {
-    const response = await axios.post(`${HOST}/customers`);
-    // change full date string to ISO format, yyyy-MM-DD
-    for (let key in response.data) {
-      const newDate = getDate(response.data[key].dateofbirth);
-      response.data[key].dateofbirth = newDate;
-    }
+    const response = await axios.post(`${HOST}/customer`);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -19,7 +13,7 @@ export async function getCustomers() {
 
 export async function addCustomer(newCustomer) {
   try {
-    const response = await axios.post(`${HOST}/customers/add`, newCustomer);
+    const response = await axios.post(`${HOST}/customer/add`, newCustomer);
     console.log(response);
   } catch (err) {
     console.log(err);
@@ -27,27 +21,13 @@ export async function addCustomer(newCustomer) {
   }
 }
 
-export async function updateCustomer(updatedCustomer) {
-  try {
-    console.log(updatedCustomer);
-    const response = await axios.put(
-      `${HOST}/customers/${updatedCustomer.customerId}`,
-      updatedCustomer
-    );
-  } catch (err) {
-    console.log(err);
-    return await Promise.reject('Failed to update customer!');
-  }
-}
 
-export async function getCustomer(id) {
+export async function getCustomer(customer_id) {
   try {
-    const response = await axios.get(`${HOST}/customers/${id}`);
-    // console.log(response.data);
-    response.data.dateofbirth = getDate(response.data.dateofbirth);
+    const response = await axios.get(`${HOST}/customer/${customer_id}`);
     return response.data;
   } catch (err) {
     console.log(err);
-    return await Promise.reject('Failed to add to customers list!');
+    return await Promise.reject('Failed to get the customer!');
   }
 }

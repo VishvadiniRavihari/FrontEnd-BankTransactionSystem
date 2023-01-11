@@ -1,11 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button } from 'antd';
-import { addCustomer } from '../api/Customers';
+import { addEmployee } from '../api/Employees';
 import * as Yup from 'yup';
 // Use this instead https://github.com/jannikbuschke/formik-antd
-export default function CustomerReg() {
-  const customerRegSchema = Yup.object().shape({
-    customerId: Yup.string().required(),
+export default function EmployeeReg() {
+  const employeeRegSchema = Yup.object().shape({
+    name: Yup.string().required(),
     addressNo: Yup.string().required(),
     street: Yup.string().required(),
     town: Yup.string().required(),
@@ -15,32 +15,38 @@ export default function CustomerReg() {
       .max(12, 'Phone number must be at most 12 digits')
       .required(),
     email: Yup.string().required,
+    branchCode: Yup.string().required,
+    salary: Yup.number().required(),
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
     setSubmitting(true);
-    const customer = {
-      customerId: values.customerId,
-      addressNo: values.addressNo,
+    const employee = {
+      name: values.name,
+      addressNo: values.address,
       street: values.street,
       town: values.town,
       phone: values.phone,
       email: values.email,
+      branchCode: values.branchCode,
+      salary: values.salary,
     };
-    addCustomer({ customer }).then(() => setSubmitting(false));
+    addEmployee({ employee }).then(() => setSubmitting(false));
   };
   return (
     <div>
       <Formik
         initialValues={{
-          customerId: '',
+          name: '',
           addressNo: '',
           street: '',
           town: '',
           phone: '',
           email: '',
+          branchCode: '',
+          salary: '',
         }}
-        validationSchema={customerRegSchema}
+        validationSchema={employeeRegSchema}
         onSubmit={handleSubmit}
       >
         {(props) => {
@@ -48,12 +54,13 @@ export default function CustomerReg() {
             borderColor: 'red',
           };
           return (
-            <Form className='customer--reg--form'>
+            <Form className='employee--reg--form'>
+              <h1> Employee Registration</h1>
               <span>
                 <Field
                   type='text'
-                  name='customerId'
-                  placeholder='Customer ID'
+                  name='name'
+                  placeholder='Full Name'
                   style={
                     props.touched.name && props.errors.name
                       ? errorInputStyle
@@ -76,9 +83,15 @@ export default function CustomerReg() {
               <span>
                 <Field type='text' name='email' placeholder='Email' />
               </span>
-              
+              <span>
+                <Field type='text' name='branchCode' placeholder='Branch Code' />
+              </span>
+              <span>
+                <Field type='number' name='salary' placeholder='Salary' />
+              </span>
+
               <Button
-                className='customer--reg--form--submit'
+                className='employee--reg--form--submit'
                 type='primary'
                 onClick={props.handleSubmit}
                 disabled={props.isSubmitting}
@@ -87,13 +100,15 @@ export default function CustomerReg() {
               </Button>
               {Object.values(props.touched).includes(true) &&
                 Object.values(props.errors).length !== 0 && (
-                  <div className='customer--reg--form--errors'>
-                    <ErrorMessage name='customerId' component='div' />
+                  <div className='employee--reg--form--errors'>
+                    <ErrorMessage name='name' component='div' />
                     <ErrorMessage name='addressNo' component='div' />
                     <ErrorMessage name='street' component='div' />
                     <ErrorMessage name='town' component='div' />
                     <ErrorMessage name='phone' component='div' />
                     <ErrorMessage name='email' component='div' />
+                    <ErrorMessage name='branchCode' component='div' />
+                    <ErrorMessage name='salary' component='div' />
                   </div>
                 )}
             </Form>

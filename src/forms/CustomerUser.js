@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { getCustomers } from '../api/Customers';
+import { getCustomer } from '../api/Customers';
 import { Table } from 'antd';
 
-export default function CustomerList() {
+export default function CustomerDetails() {
   const columns = [
     {
       title: 'Customer ID',
@@ -11,41 +11,41 @@ export default function CustomerList() {
       key: 'customer_id',
     },
     {
-      title: 'Phone',
+      title: 'Contact No',
       dataIndex: 'contact_no',
       key: 'contact_no',
     },
     {
-      title: 'Email', 
-      dataIndex: 'email',
-      key: 'email',
+        title: 'Email',
+        dataIndex: 'email',
+        key: 'email',
     },
     {
-      title: 'Address No', 
-      dataIndex: 'address_no',
-      key: 'address_no',
+        title: 'Address No',  
+        dataIndex: 'address_no',
+        key: 'address_no',
     },
     {
-      title: 'Street', 
+      title: 'Street',  
       dataIndex: 'street',
       key: 'street',
     },
     {
-      title: 'Town', 
+      title: 'Town',  
       dataIndex: 'town',
       key: 'town',
     },
   ];
 
-  const [customers, setCustomers] = React.useState();
+  const [customer, setCustomer] = React.useState();
 
   // customer list is loaded on the first component render
-  React.useEffect(() => loadCustomerList(), []);
+  React.useEffect(() => loadCustomerDetails(), []);
 
-  function loadCustomerList() {
-    getCustomers()
+  function loadCustomerDetails() {
+    getCustomer()
       .then((data) => {
-        setCustomers(data);
+        setCustomer(data);
       })
       .catch((err) => console.log(err));
   }
@@ -54,9 +54,9 @@ export default function CustomerList() {
   //console.log(Customer);
   return (
     <div>
-      <h1>Customer List</h1>
+      <h1>User</h1>
 
-      {<Table dataSource={customers} columns={columns} />}
+      {<Table dataSource={customer} columns={columns} />}
     </div>
   );
 }
