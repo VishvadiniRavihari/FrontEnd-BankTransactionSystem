@@ -11,6 +11,9 @@ export default function CustomerHandling() {
           <a href='employeePortal'>Employee Portal</a>
         </div>
         
+        <div>
+          <a href='branchManagerPortal'>Branch Manager Portal</a>
+        </div>
       </div>
     );
   }

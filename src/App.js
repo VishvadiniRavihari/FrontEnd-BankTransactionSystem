@@ -27,7 +27,9 @@ import CustomerHome from './pages/CustomerHome';
 import CustomerPortfolio from './forms/CustomerPortfolio';
 import CustomerUser from './forms/CustomerUser';
 
-
+import BranchManagerHome from './pages/BranchManagerHome';
+import LateLoanPayersReg from './forms/LateLoanPayersReportRequest';
+import LateLoanPayersList from './forms/LateLoanPayersReport';
 function App() {
   return (
     <div className="App"> 
@@ -59,6 +61,14 @@ function App() {
             <Route path = 'loan-apply' element= {<LoanApply/>}/>
             <Route path = 'portfolio' element = {<CustomerPortfolio/>} />
             <Route path = 'user' element = {<CustomerUser/>} />
+          </Route>
+          
+          <Route path = '/BranchManagerPortal'>
+            <Route exact path = '/BranchManagerPortal' element = {<BranchManagerHome/>}/>
+            <Route path = 'LateLoan-Req' element= {<LateLoanPayersReg/>}/>
+            <Route path = 'LateLoan-Report' element= {<LateLoanPayersList/>}/>
+            {/* <Route path = 'portfolio' element = {<CustomerPortfolio/>} />
+            <Route path = 'user' element = {<CustomerUser/>} /> */}
           </Route>
           
           {/*for homepage */}
