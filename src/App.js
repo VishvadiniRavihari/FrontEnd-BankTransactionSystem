@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import HomePage from './pages/HomePage';
 import CustomerReg from './forms/CustomerRegistration';
 import CustomerSet from './forms/CustomerSet';
 import LoanApply from './forms/LoanApplying';
@@ -39,14 +40,14 @@ function App() {
               <Route path = 'savAcc-Reg' element= {<SavAccountReg/>}/>
               <Route path = 'Loan-Reg' element= {<LoanCustomerReg/>}/>
               <Route path = 'FD-Reg' element= {<FDCustomerReg/>}/>
-              <Route path = 'ATMTran-Reg' element= {<ATMTransactionReg/>}/>
+              <Route path = 'ATM-Tran' element= {<ATMTransactionReg/>}/>
 
               <Route path = 'individual-customer-register' element = {<IndividualCustomerReg/>} />
               <Route path = 'child-customer-register' element = {<ChildCustomerReg/>} />
               <Route path = 'customer-register' element = {<CustomerReg/>} />
               <Route path = 'customer-set' element = {<CustomerSet/>} />
               <Route path = 'employee-register' element = {<EmployeeReg/>} />
-              <Route path = 'oragnization-customer-register' element = {<OrgCustomerReg/>} />
+              <Route path = 'organization-customer-register' element = {<OrgCustomerReg/>} />
               <Route path = 'branch-register' element = {<BranchReg/>} />
               <Route path = 'atm-register' element = {<ATMReg/>} />
               <Route path = 'employee-set' element = {<EmployeeSet/>} />
@@ -54,12 +55,14 @@ function App() {
 
           <Route path = '/CustomerPortal'>
             <Route exact path = '/CustomerPortal' element = {<CustomerHome/>}/>
-            <Route path = 'OnlineTran-Reg' element= {<OnlineTransactionReg/>}/>
+            <Route path = 'Online-Tran' element= {<OnlineTransactionReg/>}/>
             <Route path = 'loan-apply' element= {<LoanApply/>}/>
             <Route path = 'portfolio' element = {<CustomerPortfolio/>} />
             <Route path = 'user' element = {<CustomerUser/>} />
           </Route>
           
+          {/*for homepage */}
+          <Route path='/' element={<HomePage />} />
         </Routes>
     </BrowserRouter>
     </div>
